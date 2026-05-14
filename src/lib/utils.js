@@ -1,10 +1,10 @@
 import { prisma } from "./db";
 
-const getAllItems = async () => {
+export const getAllItems = async () => {
     return await prisma.opsi.findMany();
 };
 
-const createData = async (nama, bb, tb, resiko, status, umur) => {
+export const createData = async (nama, bb, tb, resiko, status, umur) => {
     if (!nama || !bb || !tb || resiko || !status || !umur)
         return Response.json({ error: "Data tidak lengkap" }, { status: 400 });
     const data = await prisma.opsi.create({

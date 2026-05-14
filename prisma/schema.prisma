@@ -16,9 +16,13 @@ enum Role {
   USER
   ADMIN
 }
+
+enum JenisKelamin {
+  MALE
+  FEMALE
+}
 model opsi {
   id          String     @id @default(cuid())
-  role        Role       @default(USER)
   name        String 
   createdAt   DateTime   @default(now()) 
   updatedAt   DateTime   @updatedAt
@@ -27,4 +31,10 @@ model opsi {
   status      String
   umur        Int
   tinggiBadan Int
+}
+
+model Session {
+  id          String     @id @default(cuid())
+  token       String     @unique
+  expiresAt   DateTime
 }
