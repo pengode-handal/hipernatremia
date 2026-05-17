@@ -1,30 +1,29 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { cache } from "react";
-import { prisma } from "../db";
+import { prisma } from "@/lib/db";
 
-export const sessionValidate = async () => {
+// cache() → kalau verifySession dipanggil 2x dalam 1 render, DB hanya diquery 1x
+export const verifySession = cache(async () => {
     const token = (await cookies()).get("session")?.value;
+    if (!token) redirect("/login");
 
-    if (!token) {
-        redirect("/login");
-    }
-
-    const isLoggedIn = await prisma.session.findFirst({
-        where: {
-            token,
-            expiresAt: {
-                gt: new Date(),
-            },
-        },
+    const session = await prisma.session.findFirst({
+        where: { token, expiresAt: { gt: new Date() } },
+        select: { id: true },
     });
-    console.log(!isLoggedIn);
-    return !isLoggedIn;
-};
 
-export const sessionRedirect = async (condition, dest) => {
-    if (await condition) {
-        redirect(dest);
-    }
-    // console.log("sekarang:" + await condition);
-};
+    if (!session) redirect("/login");
+});
+
+export const verifyGuest = cache(async () => {
+    const token = (await cookies()).get("session")?.value;
+    if (!token) return;
+
+    const session = await prisma.session.findFirst({
+        where: { token, expiresAt: { gt: new Date() } },
+        select: { id: true },
+    });
+
+    if (session) redirect("/admin");
+});

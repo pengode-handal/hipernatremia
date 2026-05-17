@@ -1,51 +1,37 @@
 import { prisma } from "./db";
 
-export const getAllItems = async () => {
-    return await prisma.opsi.findMany();
-};
-
-export const createData = async (nama, bb, tb, resiko, status, umur) => {
-    if (!nama || !bb || !tb || resiko || !status || !umur)
-        return Response.json({ error: "Data tidak lengkap" }, { status: 400 });
-    const data = await prisma.opsi.create({
-        data: {
-            name: nama,
-            beratBadan: bb,
-            risikoMeter: resiko,
-            status: status,
-            umur: umur,
-            tinggiBadan: tb,
-        },
-    });
-    return Response.json({ message: "Berhasil", data: data });
-};
-
-const allowedFields = [
+const ALLOWED_FIELDS = new Set([
     "name",
     "beratBadan",
     "umur",
     "status",
     "tinggiBadan",
     "risikoMeter",
-];
+]);
 
-export const customFilter = async (key, value) => {
-    if (!key || !value) {
-        return Response.json({ error: "Data tidak lengkap" }, { status: 400 });
-    }
+export const getAllItems = () => prisma.opsi.findMany();
 
-    if (!allowedFields.includes(key)) {
-        return Response.json({ error: "Field tidak valid" }, { status: 400 });
-    }
+export const createData = (nama, bb, tb, resiko, status, umur) => {
+    if (!nama || !bb || !tb || !resiko || !status || !umur)
+        throw new Error("Data tidak lengkap");
 
-    const data = await prisma.opsi.findMany({
-        where: {
-            [key]: {
-                contains: value,
-                mode: "insensitive",
-            },
+    return prisma.opsi.create({
+        data: {
+            name: nama,
+            beratBadan: bb,
+            tinggiBadan: tb,
+            risikoMeter: resiko,
+            status,
+            umur,
         },
     });
+};
 
-    return data;
+export const customFilter = (key, value) => {
+    if (!key || !value) throw new Error("Data tidak lengkap");
+    if (!ALLOWED_FIELDS.has(key)) throw new Error("Field tidak valid");
+
+    return prisma.opsi.findMany({
+        where: { [key]: { contains: value, mode: "insensitive" } },
+    });
 };
