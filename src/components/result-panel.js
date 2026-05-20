@@ -14,7 +14,7 @@ export default function ResultPanel({
 
   return (
     <section
-      className="w-[462px] rounded-[5px] border-[3px] bg-[#f3f4f6] p-1.5"
+      className="result-panel w-full max-w-[462px] rounded-[5px] border-[3px] bg-[#f3f4f6] p-1.5"
       style={{ borderColor: accent, color: accent }}
     >
       <div className="flex min-h-[226px] flex-col items-center justify-center rounded-[5px] bg-white px-[15px] py-3.5 text-center font-display">

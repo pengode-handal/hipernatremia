@@ -42,7 +42,7 @@ const MobileCheckPressed = () => {
   }
 
   return (
-    <MobileFrame className="items-center justify-between gap-8">
+    <MobileFrame className="mobile-check-frame items-center justify-between gap-8">
       <PageTitle
         icon={
           <button onClick={() => router.push("/mobile-info")}>
@@ -53,7 +53,7 @@ const MobileCheckPressed = () => {
         Gejala yang Dialami
       </PageTitle>
 
-      <section className="flex w-full flex-col gap-5">
+      <section className="mobile-check-list flex w-full flex-col gap-5">
         {symptoms.map((symptom) => (
           <SymptomCard
             checked={checkedSymptoms.includes(symptom.id)}
@@ -65,8 +65,8 @@ const MobileCheckPressed = () => {
         ))}
       </section>
 
-      <div className="flex w-full flex-col items-center gap-[36px]">
-        <div className="flex w-full max-w-[408px] items-center justify-around gap-2">
+      <div className="mobile-check-footer flex w-full flex-col items-center gap-[36px]">
+        <div className="form-navigation flex w-full max-w-[408px] items-center justify-around gap-2">
           <DesignButton color="red" icon="/svg2.svg" onClick={() => setCheckedSymptoms([])}>
             Set Ulang
           </DesignButton>

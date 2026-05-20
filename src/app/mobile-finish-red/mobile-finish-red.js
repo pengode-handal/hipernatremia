@@ -6,8 +6,8 @@ import StepIndicator from "../../components/step-indicator";
 
 const MobileFinishRed = () => {
   return (
-    <MobileFrame className="items-center justify-between gap-8">
-      <header className="flex flex-col items-center gap-[5px] text-center text-[#1e3e8a]">
+    <MobileFrame className="mobile-finish-frame items-center justify-between gap-8">
+      <header className="mobile-finish-header flex flex-col items-center gap-[5px] text-center text-[#1e3e8a]">
         <Image
           alt=""
           className="h-[115px] w-[87px]"
@@ -15,7 +15,7 @@ const MobileFinishRed = () => {
           src="/Logo4.svg"
           width={87}
         />
-        <h1 className="m-0 whitespace-nowrap font-display text-[44px] font-normal leading-[90%]">
+        <h1 className="m-0 max-w-full text-center font-display text-[clamp(34px,10.4vw,44px)] font-normal leading-[90%] sm:whitespace-nowrap">
           Hasil Asesmen Diagnostik
         </h1>
       </header>

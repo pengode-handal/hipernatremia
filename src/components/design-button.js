@@ -26,7 +26,7 @@ export default function DesignButton({
       type={type}
       onClick={onClick}
     >
-      <span>{children}</span>
+      <span className="whitespace-nowrap">{children}</span>
       {icon ? (
         <span
           aria-hidden="true"
