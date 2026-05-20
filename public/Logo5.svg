@@ -1,0 +1,265 @@
+<svg width="78" xmlns="http://www.w3.org/2000/svg" height="102" id="screenshot-a374fa58-9754-808c-8008-08d9dfaee288" viewBox="7 1805.01 78 102" style="-webkit-print-color-adjust::exact" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1">
+  <g id="shape-a374fa58-9754-808c-8008-08d9dfaee288">
+    <g class="frame-container-wrapper">
+      <g class="frame-container-blur">
+        <g class="frame-container-shadows">
+          <g fill="none">
+            <g class="fills" id="fills-a374fa58-9754-808c-8008-08d9dfaee288">
+              <rect rx="0" ry="0" x="7.000000000000021" y="1805.0099999999998" width="78" height="102" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="frame-background">
+              </rect>
+            </g>
+            <g class="frame-children">
+              <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c7b" rx="0" ry="0">
+                <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c7c" rx="0" ry="0">
+                  <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c7d">
+                    <g class="fills" id="fills-a374fa58-9754-808c-8008-08d9dfb15c7d">
+                      <path d="M46,1805.010009765625C46,1805.010009765625,85,1847.59765625,85,1868.7265625C85,1889.855712890625,67.524658203125,1907.010009765625,46,1907.010009765625C24.475341796875,1907.010009765625,7,1889.855712890625,7,1868.7265625C7,1847.59765625,46,1805.010009765625,46,1805.010009765625">
+                      </path>
+                    </g>
+                    <g id="strokes-b1ef1f46-c7fb-8081-8008-09a180b69aa0-a374fa58-9754-808c-8008-08d9dfb15c7d" class="strokes">
+                      <g class="inner-stroke-shape">
+                        <defs>
+                          <clipPath id="inner-stroke-render-31221-a374fa58-9754-808c-8008-08d9dfb15c7d-0">
+                            <use href="#stroke-shape-render-31221-a374fa58-9754-808c-8008-08d9dfb15c7d-0">
+                            </use>
+                          </clipPath>
+                          <path d="M46,1805.010009765625C46,1805.010009765625,85,1847.59765625,85,1868.7265625C85,1889.855712890625,67.524658203125,1907.010009765625,46,1907.010009765625C24.475341796875,1907.010009765625,7,1889.855712890625,7,1868.7265625C7,1847.59765625,46,1805.010009765625,46,1805.010009765625" style="fill:none;fill-opacity:none;stroke-width:12.86693190643563;stroke:#1e3e8a;stroke-opacity:1" id="stroke-shape-render-31221-a374fa58-9754-808c-8008-08d9dfb15c7d-0">
+                          </path>
+                        </defs>
+                        <use href="#stroke-shape-render-31221-a374fa58-9754-808c-8008-08d9dfb15c7d-0" clip-path="url(&#x27;#inner-stroke-render-31221-a374fa58-9754-808c-8008-08d9dfb15c7d-0&#x27;)">
+                        </use>
+                      </g>
+                    </g>
+                  </g>
+                  <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c7e">
+                    <g class="fills" id="fills-a374fa58-9754-808c-8008-08d9dfb15c7e">
+                      <path d="M68.664794921875,1870.53076171875C68.664794921875,1882.69921875,61.177978515625,1892.57861328125,46.2042236328125,1892.57861328125C31.2301025390625,1892.57861328125,23.743408203125,1882.69921875,23.743408203125,1870.53076171875" style="fill:#1e3e8a;fill-opacity:1">
+                      </path>
+                    </g>
+                    <g id="strokes-b1ef1f46-c7fb-8081-8008-09a180b71f79-a374fa58-9754-808c-8008-08d9dfb15c7e" class="strokes">
+                      <g class="stroke-shape">
+                        <path d="M68.664794921875,1870.53076171875C68.664794921875,1882.69921875,61.177978515625,1892.57861328125,46.2042236328125,1892.57861328125C31.2301025390625,1892.57861328125,23.743408203125,1882.69921875,23.743408203125,1870.53076171875" style="fill:none;fill-opacity:none;stroke-width:6.031374331141701;stroke:#1e3e8a;stroke-opacity:1">
+                        </path>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+                <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c7f" rx="0" ry="0">
+                  <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c80">
+                    <g class="fills" id="fills-a374fa58-9754-808c-8008-08d9dfb15c80">
+                      <path d="M46.1527099609375,1867.812744140625L46.1527099609375,1842.959228515625">
+                      </path>
+                    </g>
+                    <g id="strokes-b1ef1f46-c7fb-8081-8008-09a180b81e01-a374fa58-9754-808c-8008-08d9dfb15c80" class="strokes">
+                      <g class="stroke-shape">
+                        <path d="M46.1527099609375,1867.812744140625L46.1527099609375,1842.959228515625" style="fill:none;fill-opacity:none;stroke-width:6.031374331141701;stroke:#1e3e8a;stroke-opacity:1">
+                        </path>
+                      </g>
+                    </g>
+                  </g>
+                  <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c81">
+                    <g class="fills" id="fills-a374fa58-9754-808c-8008-08d9dfb15c81">
+                      <path d="M33.340087890625,1855.53564453125L58.659912109375,1855.53564453125">
+                      </path>
+                    </g>
+                    <g id="strokes-b1ef1f46-c7fb-8081-8008-09a180b8bc5d-a374fa58-9754-808c-8008-08d9dfb15c81" class="strokes">
+                      <g class="stroke-shape">
+                        <path d="M33.340087890625,1855.53564453125L58.659912109375,1855.53564453125" style="fill:none;fill-opacity:none;stroke-width:6.031374331141701;stroke:#1e3e8a;stroke-opacity:1">
+                        </path>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c7b" rx="0" ry="0">
+    <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c7c" rx="0" ry="0">
+      <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c7d">
+        <g class="fills" id="fills-a374fa58-9754-808c-8008-08d9dfb15c7d">
+          <path d="M46,1805.010009765625C46,1805.010009765625,85,1847.59765625,85,1868.7265625C85,1889.855712890625,67.524658203125,1907.010009765625,46,1907.010009765625C24.475341796875,1907.010009765625,7,1889.855712890625,7,1868.7265625C7,1847.59765625,46,1805.010009765625,46,1805.010009765625">
+          </path>
+        </g>
+        <g id="strokes-b1ef1f46-c7fb-8081-8008-09a180ba6364-a374fa58-9754-808c-8008-08d9dfb15c7d" class="strokes">
+          <g class="inner-stroke-shape">
+            <defs>
+              <clipPath id="inner-stroke-render-31228-a374fa58-9754-808c-8008-08d9dfb15c7d-0">
+                <use href="#stroke-shape-render-31228-a374fa58-9754-808c-8008-08d9dfb15c7d-0">
+                </use>
+              </clipPath>
+              <path d="M46,1805.010009765625C46,1805.010009765625,85,1847.59765625,85,1868.7265625C85,1889.855712890625,67.524658203125,1907.010009765625,46,1907.010009765625C24.475341796875,1907.010009765625,7,1889.855712890625,7,1868.7265625C7,1847.59765625,46,1805.010009765625,46,1805.010009765625" style="fill:none;fill-opacity:none;stroke-width:12.86693190643563;stroke:#1e3e8a;stroke-opacity:1" id="stroke-shape-render-31228-a374fa58-9754-808c-8008-08d9dfb15c7d-0">
+              </path>
+            </defs>
+            <use href="#stroke-shape-render-31228-a374fa58-9754-808c-8008-08d9dfb15c7d-0" clip-path="url(&#x27;#inner-stroke-render-31228-a374fa58-9754-808c-8008-08d9dfb15c7d-0&#x27;)">
+            </use>
+          </g>
+        </g>
+      </g>
+      <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c7e">
+        <g class="fills" id="fills-a374fa58-9754-808c-8008-08d9dfb15c7e">
+          <path d="M68.664794921875,1870.53076171875C68.664794921875,1882.69921875,61.177978515625,1892.57861328125,46.2042236328125,1892.57861328125C31.2301025390625,1892.57861328125,23.743408203125,1882.69921875,23.743408203125,1870.53076171875" style="fill:#1e3e8a;fill-opacity:1">
+          </path>
+        </g>
+        <g id="strokes-b1ef1f46-c7fb-8081-8008-09a180bb3d73-a374fa58-9754-808c-8008-08d9dfb15c7e" class="strokes">
+          <g class="stroke-shape">
+            <path d="M68.664794921875,1870.53076171875C68.664794921875,1882.69921875,61.177978515625,1892.57861328125,46.2042236328125,1892.57861328125C31.2301025390625,1892.57861328125,23.743408203125,1882.69921875,23.743408203125,1870.53076171875" style="fill:none;fill-opacity:none;stroke-width:6.031374331141701;stroke:#1e3e8a;stroke-opacity:1">
+            </path>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c7f" rx="0" ry="0">
+      <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c80">
+        <g class="fills" id="fills-a374fa58-9754-808c-8008-08d9dfb15c80">
+          <path d="M46.1527099609375,1867.812744140625L46.1527099609375,1842.959228515625">
+          </path>
+        </g>
+        <g id="strokes-b1ef1f46-c7fb-8081-8008-09a180bbad05-a374fa58-9754-808c-8008-08d9dfb15c80" class="strokes">
+          <g class="stroke-shape">
+            <path d="M46.1527099609375,1867.812744140625L46.1527099609375,1842.959228515625" style="fill:none;fill-opacity:none;stroke-width:6.031374331141701;stroke:#1e3e8a;stroke-opacity:1">
+            </path>
+          </g>
+        </g>
+      </g>
+      <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c81">
+        <g class="fills" id="fills-a374fa58-9754-808c-8008-08d9dfb15c81">
+          <path d="M33.340087890625,1855.53564453125L58.659912109375,1855.53564453125">
+          </path>
+        </g>
+        <g id="strokes-b1ef1f46-c7fb-8081-8008-09a180bc0085-a374fa58-9754-808c-8008-08d9dfb15c81" class="strokes">
+          <g class="stroke-shape">
+            <path d="M33.340087890625,1855.53564453125L58.659912109375,1855.53564453125" style="fill:none;fill-opacity:none;stroke-width:6.031374331141701;stroke:#1e3e8a;stroke-opacity:1">
+            </path>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c7c" rx="0" ry="0">
+    <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c7d">
+      <g class="fills" id="fills-a374fa58-9754-808c-8008-08d9dfb15c7d">
+        <path d="M46,1805.010009765625C46,1805.010009765625,85,1847.59765625,85,1868.7265625C85,1889.855712890625,67.524658203125,1907.010009765625,46,1907.010009765625C24.475341796875,1907.010009765625,7,1889.855712890625,7,1868.7265625C7,1847.59765625,46,1805.010009765625,46,1805.010009765625">
+        </path>
+      </g>
+      <g id="strokes-b1ef1f46-c7fb-8081-8008-09a180bd03b8-a374fa58-9754-808c-8008-08d9dfb15c7d" class="strokes">
+        <g class="inner-stroke-shape">
+          <defs>
+            <clipPath id="inner-stroke-render-31234-a374fa58-9754-808c-8008-08d9dfb15c7d-0">
+              <use href="#stroke-shape-render-31234-a374fa58-9754-808c-8008-08d9dfb15c7d-0">
+              </use>
+            </clipPath>
+            <path d="M46,1805.010009765625C46,1805.010009765625,85,1847.59765625,85,1868.7265625C85,1889.855712890625,67.524658203125,1907.010009765625,46,1907.010009765625C24.475341796875,1907.010009765625,7,1889.855712890625,7,1868.7265625C7,1847.59765625,46,1805.010009765625,46,1805.010009765625" style="fill:none;fill-opacity:none;stroke-width:12.86693190643563;stroke:#1e3e8a;stroke-opacity:1" id="stroke-shape-render-31234-a374fa58-9754-808c-8008-08d9dfb15c7d-0">
+            </path>
+          </defs>
+          <use href="#stroke-shape-render-31234-a374fa58-9754-808c-8008-08d9dfb15c7d-0" clip-path="url(&#x27;#inner-stroke-render-31234-a374fa58-9754-808c-8008-08d9dfb15c7d-0&#x27;)">
+          </use>
+        </g>
+      </g>
+    </g>
+    <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c7e">
+      <g class="fills" id="fills-a374fa58-9754-808c-8008-08d9dfb15c7e">
+        <path d="M68.664794921875,1870.53076171875C68.664794921875,1882.69921875,61.177978515625,1892.57861328125,46.2042236328125,1892.57861328125C31.2301025390625,1892.57861328125,23.743408203125,1882.69921875,23.743408203125,1870.53076171875" style="fill:#1e3e8a;fill-opacity:1">
+        </path>
+      </g>
+      <g id="strokes-b1ef1f46-c7fb-8081-8008-09a180bddd71-a374fa58-9754-808c-8008-08d9dfb15c7e" class="strokes">
+        <g class="stroke-shape">
+          <path d="M68.664794921875,1870.53076171875C68.664794921875,1882.69921875,61.177978515625,1892.57861328125,46.2042236328125,1892.57861328125C31.2301025390625,1892.57861328125,23.743408203125,1882.69921875,23.743408203125,1870.53076171875" style="fill:none;fill-opacity:none;stroke-width:6.031374331141701;stroke:#1e3e8a;stroke-opacity:1">
+          </path>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c7f" rx="0" ry="0">
+    <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c80">
+      <g class="fills" id="fills-a374fa58-9754-808c-8008-08d9dfb15c80">
+        <path d="M46.1527099609375,1867.812744140625L46.1527099609375,1842.959228515625">
+        </path>
+      </g>
+      <g id="strokes-b1ef1f46-c7fb-8081-8008-09a180bec76a-a374fa58-9754-808c-8008-08d9dfb15c80" class="strokes">
+        <g class="stroke-shape">
+          <path d="M46.1527099609375,1867.812744140625L46.1527099609375,1842.959228515625" style="fill:none;fill-opacity:none;stroke-width:6.031374331141701;stroke:#1e3e8a;stroke-opacity:1">
+          </path>
+        </g>
+      </g>
+    </g>
+    <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c81">
+      <g class="fills" id="fills-a374fa58-9754-808c-8008-08d9dfb15c81">
+        <path d="M33.340087890625,1855.53564453125L58.659912109375,1855.53564453125">
+        </path>
+      </g>
+      <g id="strokes-b1ef1f46-c7fb-8081-8008-09a180bf4013-a374fa58-9754-808c-8008-08d9dfb15c81" class="strokes">
+        <g class="stroke-shape">
+          <path d="M33.340087890625,1855.53564453125L58.659912109375,1855.53564453125" style="fill:none;fill-opacity:none;stroke-width:6.031374331141701;stroke:#1e3e8a;stroke-opacity:1">
+          </path>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c7d">
+    <g class="fills" id="fills-a374fa58-9754-808c-8008-08d9dfb15c7d">
+      <path d="M46,1805.010009765625C46,1805.010009765625,85,1847.59765625,85,1868.7265625C85,1889.855712890625,67.524658203125,1907.010009765625,46,1907.010009765625C24.475341796875,1907.010009765625,7,1889.855712890625,7,1868.7265625C7,1847.59765625,46,1805.010009765625,46,1805.010009765625">
+      </path>
+    </g>
+    <g id="strokes-b1ef1f46-c7fb-8081-8008-09a180c06fef-a374fa58-9754-808c-8008-08d9dfb15c7d" class="strokes">
+      <g class="inner-stroke-shape">
+        <defs>
+          <clipPath id="inner-stroke-render-31239-a374fa58-9754-808c-8008-08d9dfb15c7d-0">
+            <use href="#stroke-shape-render-31239-a374fa58-9754-808c-8008-08d9dfb15c7d-0">
+            </use>
+          </clipPath>
+          <path d="M46,1805.010009765625C46,1805.010009765625,85,1847.59765625,85,1868.7265625C85,1889.855712890625,67.524658203125,1907.010009765625,46,1907.010009765625C24.475341796875,1907.010009765625,7,1889.855712890625,7,1868.7265625C7,1847.59765625,46,1805.010009765625,46,1805.010009765625" style="fill:none;fill-opacity:none;stroke-width:12.86693190643563;stroke:#1e3e8a;stroke-opacity:1" id="stroke-shape-render-31239-a374fa58-9754-808c-8008-08d9dfb15c7d-0">
+          </path>
+        </defs>
+        <use href="#stroke-shape-render-31239-a374fa58-9754-808c-8008-08d9dfb15c7d-0" clip-path="url(&#x27;#inner-stroke-render-31239-a374fa58-9754-808c-8008-08d9dfb15c7d-0&#x27;)">
+        </use>
+      </g>
+    </g>
+  </g>
+
+  <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c7e">
+    <g class="fills" id="fills-a374fa58-9754-808c-8008-08d9dfb15c7e">
+      <path d="M68.664794921875,1870.53076171875C68.664794921875,1882.69921875,61.177978515625,1892.57861328125,46.2042236328125,1892.57861328125C31.2301025390625,1892.57861328125,23.743408203125,1882.69921875,23.743408203125,1870.53076171875" style="fill:#1e3e8a;fill-opacity:1">
+      </path>
+    </g>
+    <g id="strokes-b1ef1f46-c7fb-8081-8008-09a180c1ad61-a374fa58-9754-808c-8008-08d9dfb15c7e" class="strokes">
+      <g class="stroke-shape">
+        <path d="M68.664794921875,1870.53076171875C68.664794921875,1882.69921875,61.177978515625,1892.57861328125,46.2042236328125,1892.57861328125C31.2301025390625,1892.57861328125,23.743408203125,1882.69921875,23.743408203125,1870.53076171875" style="fill:none;fill-opacity:none;stroke-width:6.031374331141701;stroke:#1e3e8a;stroke-opacity:1">
+        </path>
+      </g>
+    </g>
+  </g>
+
+  <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c80">
+    <g class="fills" id="fills-a374fa58-9754-808c-8008-08d9dfb15c80">
+      <path d="M46.1527099609375,1867.812744140625L46.1527099609375,1842.959228515625">
+      </path>
+    </g>
+    <g id="strokes-b1ef1f46-c7fb-8081-8008-09a180c27b88-a374fa58-9754-808c-8008-08d9dfb15c80" class="strokes">
+      <g class="stroke-shape">
+        <path d="M46.1527099609375,1867.812744140625L46.1527099609375,1842.959228515625" style="fill:none;fill-opacity:none;stroke-width:6.031374331141701;stroke:#1e3e8a;stroke-opacity:1">
+        </path>
+      </g>
+    </g>
+  </g>
+
+  <g id="shape-a374fa58-9754-808c-8008-08d9dfb15c81">
+    <g class="fills" id="fills-a374fa58-9754-808c-8008-08d9dfb15c81">
+      <path d="M33.340087890625,1855.53564453125L58.659912109375,1855.53564453125">
+      </path>
+    </g>
+    <g id="strokes-b1ef1f46-c7fb-8081-8008-09a180c2ccee-a374fa58-9754-808c-8008-08d9dfb15c81" class="strokes">
+      <g class="stroke-shape">
+        <path d="M33.340087890625,1855.53564453125L58.659912109375,1855.53564453125" style="fill:none;fill-opacity:none;stroke-width:6.031374331141701;stroke:#1e3e8a;stroke-opacity:1">
+        </path>
+      </g>
+    </g>
+  </g>
+</svg>
