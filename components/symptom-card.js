@@ -6,7 +6,7 @@ export default function SymptomCard({
 }) {
   return (
     <label
-      className={`group flex min-h-[155px] cursor-pointer items-start justify-between gap-[15px] rounded-[10px] border-[3px] px-[15px] py-1.5 text-left shadow-[-4px_3px_0_#1e3e8a] transition-all duration-200 ease-out active:-translate-x-[2px] active:translate-y-[2px] active:shadow-none ${
+      className={`symptom-card group flex min-h-[155px] cursor-pointer items-start justify-between gap-[15px] rounded-[10px] border-[3px] px-[15px] py-1.5 text-left shadow-[-4px_3px_0_#1e3e8a] transition-all duration-200 ease-out active:-translate-x-[2px] active:translate-y-[2px] active:shadow-none ${
         checked
           ? "border-[#1e3e8a] bg-[#60a5fa] text-[#f3f4f6] hover:bg-[#5499ea]"
           : "border-[#1e3e8a] bg-[#f3f4f6] text-[#1e3e8a] hover:border-[#60a5fa] hover:text-[#60a5fa] hover:shadow-[-4px_3px_0_#60a5fa]"
@@ -25,7 +25,7 @@ export default function SymptomCard({
         onChange={onChange}
       />
       <span
-        className={`relative mt-1 grid h-[47px] w-[47px] shrink-0 place-items-center rounded-[5px] border-[3px] transition-all duration-200 ease-out ${
+        className={`symptom-card-check relative mt-1 grid h-[47px] w-[47px] shrink-0 place-items-center rounded-[5px] border-[3px] transition-all duration-200 ease-out ${
           checked
             ? "border-[#1e3e8a] bg-[#f3f4f6] text-[#1e3e8a]"
             : "border-[#1e3e8a] bg-[#60a5fa] group-hover:border-[#60a5fa] group-hover:bg-[#f3f4f6]"

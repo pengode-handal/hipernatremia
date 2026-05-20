@@ -2,6 +2,9 @@ import "./global.css";
 
 export const metadata = {
   title: "Kuis Risiko Hipernatremia",
+  icons: {
+    icon: "/Logo5.svg",
+  },
 };
 
 export default function RootLayout({ children }) {
