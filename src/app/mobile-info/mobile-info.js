@@ -41,7 +41,7 @@ const MobileInfo = () => {
   );
 
   return (
-    <MobileFrame className="items-center justify-between gap-10">
+    <MobileFrame className="mobile-info-frame items-center justify-between gap-10">
       <PageTitle
         icon={
           <Image
@@ -56,7 +56,7 @@ const MobileInfo = () => {
         Masukkan Data Anda
       </PageTitle>
 
-      <form className="flex w-full max-w-[298px] flex-col gap-[38px]">
+      <form className="mobile-info-form flex w-full max-w-[298px] flex-col gap-[38px]">
         <DesignInput
           label="Nama"
           name="name"
@@ -122,8 +122,8 @@ const MobileInfo = () => {
         </label>
       </form>
 
-      <div className="flex w-full flex-col items-center gap-[36px]">
-        <div className="flex w-full max-w-[408px] items-center justify-around gap-2">
+      <div className="mobile-info-footer flex w-full flex-col items-center gap-[36px]">
+        <div className="form-navigation flex w-full max-w-[408px] items-center justify-around gap-2">
           <DesignButton
             color="red"
             icon="/svg4.svg"
