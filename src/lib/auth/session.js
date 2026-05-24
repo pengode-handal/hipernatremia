@@ -1,16 +1,31 @@
-import { compare } from "bcrypt";
-import { prisma } from "../db";
-import { cookies } from "next/headers";
-import { randomUUID } from "crypto";
+"use server";
 
-export const createAdminSession = async () => {
+import { cookies } from "next/headers";
+import { prisma } from "@/lib/db";
+import { randomUUID } from "crypto";
+import { verifyGuest } from "./dal";
+
+const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "admin";
+
+export const adminLogin = async (password) => {
+    if (await verifyGuest()) {
+        return { success: false, message: "Anda sudah login" };
+    }
+    if (password !== ADMIN_PASSWORD) {
+        return { success: false, message: "Sandi tidak sesuai" };
+    }
+
     const token = randomUUID();
     const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
 
-    const [data, cookieStore] = await Promise.all([
-        prisma.session.create({ data: { token, expiresAt } }),
-        cookies(),
-    ]);
+    await prisma.session.create({
+        data: {
+            token,
+            expiresAt,
+        },
+    });
+
+    const cookieStore = await cookies();
 
     cookieStore.set("session", token, {
         httpOnly: true,
@@ -20,7 +35,7 @@ export const createAdminSession = async () => {
         path: "/",
     });
 
-    return data;
+    return {
+        success: true,
+    };
 };
-
-export const loginValidate = (pw) => compare(pw, process.env.PW_ADMIN);

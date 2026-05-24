@@ -1,3 +1,5 @@
+"server-only";
+
 import { prisma } from "./db";
 
 const ALLOWED_FIELDS = new Set([
@@ -11,8 +13,8 @@ const ALLOWED_FIELDS = new Set([
 
 export const getAllItems = () => prisma.opsi.findMany();
 
-export const createData = (nama, bb, tb, resiko, status, umur) => {
-    if (!nama || !bb || !tb || !resiko || !status || !umur)
+export const createData = (nama, bb, tb, resiko, status, umur, risk) => {
+    if (!nama || !bb || !tb || !resiko || !status || !umur || !risk)
         throw new Error("Data tidak lengkap");
 
     return prisma.opsi.create({
@@ -23,6 +25,7 @@ export const createData = (nama, bb, tb, resiko, status, umur) => {
             risikoMeter: resiko,
             status,
             umur,
+            risk,
         },
     });
 };

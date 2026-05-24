@@ -1,0 +1,128 @@
+export const filters = [
+    {
+        key: "status",
+        label: "Status",
+        options: ["Semua Status", "Normal", "Sedang", "Tinggi"],
+    },
+    {
+        key: "age",
+        label: "Umur",
+        options: [
+            "Semua Umur",
+            "0-12 tahun",
+            "13-18 tahun",
+            "19-59 tahun",
+            "60+ tahun",
+        ],
+    },
+    {
+        key: "weight",
+        label: "Berat Badan",
+        options: ["Semua BB", "0-40 kg", "41-60 kg", "61-80 kg", "81+ kg"],
+    },
+    {
+        key: "height",
+        label: "Tinggi Badan",
+        options: [
+            "Semua TB",
+            "0-140 cm",
+            "141-160 cm",
+            "161-180 cm",
+            "181+ cm",
+        ],
+    },
+    {
+        key: "risk",
+        label: "Risiko Meter",
+        options: ["Semua Meter", "0-99 MEQI", "100-499 MEQI", "500+ MEQI"],
+    },
+];
+
+const patientSeed = [
+    {
+        name: "Mirza Opsi Uhuy",
+        status: "Risiko Tinggi",
+        age: 67,
+        weight: 67,
+        height: 420,
+        meter: "900 MEQI",
+        risk: "high",
+    },
+    {
+        name: "Anson Opsi Anjay",
+        status: "Risiko Rendah",
+        age: 67,
+        weight: 67,
+        height: 420,
+        meter: "0 MEQI",
+        risk: "low",
+    },
+    {
+        name: "Mirza Opsi Uhuy",
+        status: "Risiko Tinggi",
+        age: 67,
+        weight: 67,
+        height: 420,
+        meter: "900 MEQI",
+        risk: "high",
+    },
+    {
+        name: "Saip Subianto Rakabuming",
+        status: "Risiko Sedang",
+        age: 67,
+        weight: 67,
+        height: 420,
+        meter: "110 MEQI",
+        risk: "medium",
+    },
+    {
+        name: "Anson Opsi Anjay",
+        status: "Risiko Rendah",
+        age: 67,
+        weight: 67,
+        height: 420,
+        meter: "0 MEQI",
+        risk: "low",
+    },
+    {
+        name: "Mirza Opsi Uhuy",
+        status: "Risiko Tinggi",
+        age: 67,
+        weight: 67,
+        height: 420,
+        meter: "900 MEQI",
+        risk: "high",
+    },
+    {
+        name: "Saip Subianto Rakabuming",
+        status: "Risiko Sedang",
+        age: 67,
+        weight: 67,
+        height: 420,
+        meter: "110 MEQI",
+        risk: "medium",
+    },
+    {
+        name: "Anson Opsi Anjay",
+        status: "Risiko Rendah",
+        age: 67,
+        weight: 67,
+        height: 420,
+        meter: "0 MEQI",
+        risk: "low",
+    },
+    {
+        name: "Saip Subianto Rakabuming",
+        status: "Risiko Sedang",
+        age: 67,
+        weight: 67,
+        height: 420,
+        meter: "110 MEQI",
+        risk: "medium",
+    },
+];
+
+export const patients = Array.from(
+    { length: 100 },
+    (_, index) => patientSeed[index % patientSeed.length],
+);
