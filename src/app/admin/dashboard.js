@@ -207,7 +207,7 @@ const DBDashboard = ({ respondent }) => {
                 {visibleRespondents.map((respondent, index) => (
                     <div
                         className={`${styles.tableGrid} ${styles.tableRow} ${
-                            styles[respondent.risk]
+                            styles[respondent.status]
                         }`}
                         key={`${respondent.name}-${respondent.status}-${index}`}>
                         <span data-label="Nama">{respondent.name}</span>

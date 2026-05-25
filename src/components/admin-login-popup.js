@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { adminLogin } from "@/lib/auth/session";
+import { redirect } from "next/navigation";
 
 const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "admin";
 const ADMIN_DASHBOARD_URL =
@@ -53,6 +54,9 @@ export default function AdminLoginPopup({ open, onClose }) {
 
         const result = await adminLogin(password);
 
+        if (!result.success && result.message === "Anda sudah login") {
+            redirect(ADMIN_DASHBOARD_URL);
+        }
         if (!result.success) {
             setError(result.message);
             return;

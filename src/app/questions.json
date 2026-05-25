@@ -1,0 +1,152 @@
+[
+    {
+        "step": 1,
+        "type": "radio",
+        "pageTitle": "Status Hidrasi",
+        "question": "Bagaimana kondisi asupan cairan pasien dalam 24 jam terakhir?",
+        "fieldId": "hidrasi",
+        "options": [
+            {
+                "id": "hidrasi-a",
+                "label": "Normal (>1500 ml/hari)",
+                "description": "Asupan cairan mencukupi kebutuhan harian",
+                "score": 0
+            },
+            {
+                "id": "hidrasi-b",
+                "label": "Kurang (500–1500 ml/hari)",
+                "description": "Asupan cairan di bawah kebutuhan normal",
+                "score": 15
+            },
+            {
+                "id": "hidrasi-c",
+                "label": "Sangat Kurang (<500 ml/hari)",
+                "description": "Pasien tidak mampu atau tidak mau minum",
+                "score": 30
+            },
+            {
+                "id": "hidrasi-d",
+                "label": "Tidak Diketahui",
+                "description": "Informasi asupan cairan tidak tersedia",
+                "score": 10
+            }
+        ]
+    },
+    {
+        "step": 2,
+        "type": "radio",
+        "pageTitle": "Fungsi Renal",
+        "question": "Bagaimana status fungsi ginjal pasien saat ini?",
+        "fieldId": "renal",
+        "options": [
+            {
+                "id": "renal-a",
+                "label": "Normal",
+                "description": "Kreatinin dan GFR dalam batas normal",
+                "score": 0
+            },
+            {
+                "id": "renal-b",
+                "label": "CKD Stadium 1–2",
+                "description": "Penurunan GFR ringan (60–89 ml/min)",
+                "score": 10
+            },
+            {
+                "id": "renal-c",
+                "label": "CKD Stadium 3–4",
+                "description": "Penurunan GFR sedang-berat (15–59 ml/min)",
+                "score": 25
+            },
+            {
+                "id": "renal-d",
+                "label": "CKD Stadium 5 / AKI",
+                "description": "Gagal ginjal atau cedera ginjal akut",
+                "score": 40
+            }
+        ]
+    },
+    {
+        "step": 3,
+        "type": "radio",
+        "pageTitle": "Penggunaan Obat",
+        "question": "Apakah pasien menggunakan obat-obatan berikut?",
+        "fieldId": "obat",
+        "options": [
+            {
+                "id": "obat-a",
+                "label": "Tidak Ada",
+                "description": "Tidak menggunakan obat yang relevan",
+                "score": 0
+            },
+            {
+                "id": "obat-b",
+                "label": "Diuretik Loop",
+                "description": "Furosemid, bumetanid, atau sejenisnya",
+                "score": 20
+            },
+            {
+                "id": "obat-c",
+                "label": "Kortikosteroid",
+                "description": "Prednison, deksametason, atau sejenisnya",
+                "score": 15
+            },
+            {
+                "id": "obat-d",
+                "label": "Litium",
+                "description": "Penggunaan litium jangka panjang",
+                "score": 25
+            },
+            {
+                "id": "obat-e",
+                "label": "Kombinasi ≥2 Obat",
+                "description": "Dua atau lebih obat risiko di atas",
+                "score": 35
+            }
+        ]
+    },
+    {
+        "step": 4,
+        "type": "checkbox",
+        "pageTitle": "Gejala yang Dialami",
+        "question": "Pilih semua gejala yang dialami pasien saat ini",
+        "fieldId": "gejala",
+        "options": [
+            {
+                "id": "gejala-1",
+                "label": "Tidak Ada",
+                "description": "Normal tanpa gejala",
+                "score": 0
+            },
+            {
+                "id": "gejala-2",
+                "label": "Penurunan Kesadaran",
+                "description": "Bingung, disorientasi, atau tidak responsif",
+                "score": 30
+            },
+            {
+                "id": "gejala-3",
+                "label": "Turgor Kulit Buruk",
+                "description": "Kulit kering, tidak elastis, atau lembek",
+                "score": 15
+            },
+            {
+                "id": "gejala-4",
+                "label": "Oliguria / Anuria",
+                "description": "Produksi urin sangat sedikit atau tidak ada",
+                "score": 25
+            },
+            {
+                "id": "gejala-5",
+                "label": "Kejang",
+                "description": "Aktivitas kejang atau riwayat kejang baru",
+                "score": 35
+            },
+            {
+                "id": "gejala-6",
+                "label": "Demam Tinggi",
+                "description": "Suhu tubuh >38.5°C",
+                "score": 10
+            }
+        ]
+    }
+]
