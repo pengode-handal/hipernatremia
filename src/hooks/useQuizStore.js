@@ -149,32 +149,39 @@ export function useQuizStore() {
 }
 
 export function getRiskFromScore(score) {
-    if (score <= 30) {
+    if (score <= 39) {
         return {
             color: "green",
             risk: "Risiko Rendah",
             label: "HIPERNATREMIA MINIMAL",
-            range: `${score} MEQ/L`,
+            range: `Score: ${score}`,
             status: "rendah",
             advice: "Risiko hipernatremia saat ini tergolong rendah. Pertahankan asupan cairan yang cukup (≥1500 ml/hari), pantau kondisi pasien secara berkala, dan edukasi pasien mengenai tanda-tanda dehidrasi dini.",
         };
-    } else if (score <= 70) {
-        return {
-            color: "blue",
-            risk: "Risiko Sedang",
-            label: "HIPERNATREMIA SUBAKUT",
-            range: `${score} MEQ/L`,
-            status: "sedang",
-            advice: "Pasien berisiko sedang mengalami hipernatremia. Tingkatkan pemantauan status cairan, pertimbangkan pemeriksaan elektrolit serum, dan konsultasikan dengan tim medis jika kondisi memburuk dalam 24–48 jam.",
-        };
     } else {
         return {
+            // color: "blue",
+            // risk: "Risiko Sedang",
+            // label: "HIPERNATREMIA SUBAKUT",
+            // range: `${score} MEQ/L`,
+            // status: "sedang",
+            // advice: "Pasien berisiko sedang mengalami hipernatremia. Tingkatkan pemantauan status cairan, pertimbangkan pemeriksaan elektrolit serum, dan konsultasikan dengan tim medis jika kondisi memburuk dalam 24–48 jam.",
             color: "red",
             risk: "Risiko Tinggi",
-            label: "HIPERNATREMIA AKUT",
-            range: `${score} MEQ/L`,
+            label: "BERISIKO MENGALAMI HIPERNATREMIA",
+            range: `Score: ${score}`,
             status: "tinggi",
-            advice: "Pasien berisiko tinggi mengalami hipernatremia akut. Diperlukan evaluasi segera oleh dokter, pemeriksaan natrium serum, dan tatalaksana koreksi cairan yang tepat untuk mencegah komplikasi neurologis serius.",
+            advice: "Pasien Berisiko mengalami hipernatremia akibat kebiasaan hidrasi yang kurang baik dan kehilangan cairan selama aktivitas sehari-hari.",
         };
     }
+    // else {
+    //     return {
+    //         color: "red",
+    //         risk: "Risiko Tinggi",
+    //         label: "HIPERNATREMIA AKUT",
+    //         range: `${score} MEQ/L`,
+    //         status: "tinggi",
+    //         advice: "Pasien berisiko tinggi mengalami hipernatremia akut. Diperlukan evaluasi segera oleh dokter, pemeriksaan natrium serum, dan tatalaksana koreksi cairan yang tepat untuk mencegah komplikasi neurologis serius.",
+    //     };
+    // }
 }

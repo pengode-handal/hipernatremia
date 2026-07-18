@@ -193,7 +193,7 @@ const MobileInfo = () => {
                         Selanjutnya
                     </DesignButton>
                 </div>
-                <StepIndicator current={2} total={6} />
+                <StepIndicator current={2} total={22} />
             </div>
         </MobileFrame>
     );

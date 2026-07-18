@@ -2,27 +2,49 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useMemo } from "react";
+
 import DesignButton from "@/components/design-button";
 import MobileFrame from "@/components/mobile-frame";
 import PageTitle from "@/components/page-title";
 import StepIndicator from "@/components/step-indicator";
 import SymptomCard from "@/components/symptom-card";
-import { useQuizStore, getRiskFromScore } from "@/hooks/useQuizStore";
+
+import { getRiskFromScore, useQuizStore } from "@/hooks/useQuizStore";
+
 import { submitQuizAction } from "@/app/actions/submitQuiz";
 import { markQuizComplete } from "@/lib/quizValidator";
 
 const INDICATOR_OFFSET = 2;
-const INDICATOR_TOTAL = 6;
+const INDICATOR_TOTAL = 22;
 
-function RadioStep({ question, answers, onSave, onNext, onBack, step }) {
+function RadioStep({
+    question,
+    answers,
+    onSave,
+    onNext,
+    onSubmit,
+    onBack,
+    step,
+    isLastStep,
+    isSubmitting,
+}) {
     const [selected, setSelected] = useState(
         () => answers[question.fieldId] ?? null,
     );
 
     const handleNext = () => {
-        if (!selected) return;
+        if (!selected || isSubmitting) {
+            return;
+        }
+
         onSave(question.fieldId, selected);
+
+        if (isLastStep) {
+            onSubmit(selected);
+            return;
+        }
+
         onNext();
     };
 
@@ -30,7 +52,7 @@ function RadioStep({ question, answers, onSave, onNext, onBack, step }) {
         <MobileFrame className="mobile-check-frame items-center justify-between gap-8">
             <PageTitle
                 icon={
-                    <button onClick={onBack} type="button">
+                    <button type="button" onClick={onBack} aria-label="Kembali">
                         <Image
                             alt="Kembali"
                             className="h-[46px] w-[46px]"
@@ -44,16 +66,17 @@ function RadioStep({ question, answers, onSave, onNext, onBack, step }) {
             </PageTitle>
 
             <section className="mobile-check-list flex w-full flex-col gap-5">
-                <p className="font-poppins text-base text-[#1e3e8a] font-medium">
+                <p className="font-poppins text-base font-medium text-[#1e3e8a]">
                     {question.question}
                 </p>
-                {question.options.map((opt) => (
+
+                {question.options.map((option) => (
                     <SymptomCard
-                        key={opt.id}
-                        checked={selected === opt.id}
-                        title={opt.label}
-                        description={opt.description}
-                        onChange={() => setSelected(opt.id)}
+                        key={option.id}
+                        checked={selected === option.id}
+                        title={option.label}
+                        description={option.description}
+                        onChange={() => setSelected(option.id)}
                     />
                 ))}
             </section>
@@ -66,13 +89,19 @@ function RadioStep({ question, answers, onSave, onNext, onBack, step }) {
                         onClick={() => setSelected(null)}>
                         Set Ulang
                     </DesignButton>
+
                     <DesignButton
                         color="green"
                         icon="/svg-path1.svg"
                         onClick={handleNext}>
-                        Selanjutnya
+                        {isSubmitting
+                            ? "Memproses..."
+                            : isLastStep
+                              ? "Lihat Hasil"
+                              : "Selanjutnya"}
                     </DesignButton>
                 </div>
+
                 <StepIndicator
                     current={step + INDICATOR_OFFSET}
                     total={INDICATOR_TOTAL}
@@ -86,30 +115,51 @@ function CheckboxStep({
     question,
     answers,
     onSave,
+    onNext,
     onSubmit,
     onBack,
     step,
+    isLastStep,
     isSubmitting,
 }) {
-    const [checked, setChecked] = useState(
-        () => answers[question.fieldId] ?? [],
-    );
+    const [checked, setChecked] = useState(() => {
+        const savedAnswer = answers[question.fieldId];
 
-    const toggle = (id) =>
-        setChecked((curr) =>
-            curr.includes(id) ? curr.filter((x) => x !== id) : [...curr, id],
-        );
+        return Array.isArray(savedAnswer) ? savedAnswer : [];
+    });
 
-    const handleSubmit = () => {
+    const toggle = (optionId) => {
+        setChecked((currentAnswers) => {
+            if (currentAnswers.includes(optionId)) {
+                return currentAnswers.filter(
+                    (answerId) => answerId !== optionId,
+                );
+            }
+
+            return [...currentAnswers, optionId];
+        });
+    };
+
+    const handleNext = () => {
+        if (checked.length === 0 || isSubmitting) {
+            return;
+        }
+
         onSave(question.fieldId, checked);
-        onSubmit(checked);
+
+        if (isLastStep) {
+            onSubmit(checked);
+            return;
+        }
+
+        onNext();
     };
 
     return (
         <MobileFrame className="mobile-check-frame items-center justify-between gap-8">
             <PageTitle
                 icon={
-                    <button onClick={onBack} type="button">
+                    <button type="button" onClick={onBack} aria-label="Kembali">
                         <Image
                             alt="Kembali"
                             className="h-[46px] w-[46px]"
@@ -123,16 +173,17 @@ function CheckboxStep({
             </PageTitle>
 
             <section className="mobile-check-list flex w-full flex-col gap-5">
-                <p className="font-poppins text-base text-[#1e3e8a] font-medium">
+                <p className="font-poppins text-base font-medium text-[#1e3e8a]">
                     {question.question}
                 </p>
-                {question.options.map((opt) => (
+
+                {question.options.map((option) => (
                     <SymptomCard
-                        key={opt.id}
-                        checked={checked.includes(opt.id)}
-                        title={opt.label}
-                        description={opt.description}
-                        onChange={() => toggle(opt.id)}
+                        key={option.id}
+                        checked={checked.includes(option.id)}
+                        title={option.label}
+                        description={option.description}
+                        onChange={() => toggle(option.id)}
                     />
                 ))}
             </section>
@@ -145,13 +196,19 @@ function CheckboxStep({
                         onClick={() => setChecked([])}>
                         Set Ulang
                     </DesignButton>
+
                     <DesignButton
                         color="green"
                         icon="/svg-path1.svg"
-                        onClick={handleSubmit}>
-                        {isSubmitting ? "Memproses..." : "Lihat Hasil"}
+                        onClick={handleNext}>
+                        {isSubmitting
+                            ? "Memproses..."
+                            : isLastStep
+                              ? "Lihat Hasil"
+                              : "Selanjutnya"}
                     </DesignButton>
                 </div>
+
                 <StepIndicator
                     current={step + INDICATOR_OFFSET}
                     total={INDICATOR_TOTAL}
@@ -168,6 +225,7 @@ export default function QuizStepClient({
     allQuestions,
 }) {
     const router = useRouter();
+
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitError, setSubmitError] = useState(null);
 
@@ -175,72 +233,131 @@ export default function QuizStepClient({
         useQuizStore();
 
     useEffect(() => {
-        if (hydrated) setCurrentStep(question.step);
+        if (hydrated) {
+            setCurrentStep(question.step);
+        }
     }, [hydrated, question.step, setCurrentStep]);
 
+    const questions = useMemo(
+        () => (Array.isArray(allQuestions) ? allQuestions : []),
+        [allQuestions],
+    );
+
+    const lastQuestionStep = questions.reduce(
+        (highestStep, currentQuestion) => {
+            const currentStep = Number(currentQuestion.step) || 0;
+
+            return Math.max(highestStep, currentStep);
+        },
+        Number(totalSteps) || 0,
+    );
+
+    const isFinalQuestion =
+        Boolean(isLastStep) ||
+        Number(question.step) === Number(totalSteps) ||
+        Number(question.step) === Number(lastQuestionStep);
+
     const handleBack = useCallback(() => {
-        if (question.step === 1) {
+        if (Number(question.step) === 1) {
             router.push("/mobile-info");
-        } else {
-            router.push(`/mobile-quiz/${question.step - 1}`);
+            return;
         }
+
+        router.push(`/mobile-quiz/${Number(question.step) - 1}`);
     }, [question.step, router]);
 
     const handleNext = useCallback(() => {
-        router.push(`/mobile-quiz/${question.step + 1}`);
-    }, [question.step, router]);
+        if (isFinalQuestion) {
+            return;
+        }
+
+        router.push(`/mobile-quiz/${Number(question.step) + 1}`);
+    }, [isFinalQuestion, question.step, router]);
 
     const handleFinalSubmit = useCallback(
-        async (checkboxValue) => {
+        async (finalValue) => {
+            if (isSubmitting) {
+                return;
+            }
+
             setIsSubmitting(true);
             setSubmitError(null);
 
             try {
                 const finalAnswers = {
                     ...answers,
-                    [question.fieldId]: checkboxValue,
+                    [question.fieldId]: finalValue,
                 };
 
-                let total = 0;
-                for (const q of allQuestions) {
-                    if (q.type === "radio") {
-                        const answer = finalAnswers[q.fieldId];
-                        if (answer) {
-                            const opt = q.options?.find((o) => o.id === answer);
-                            if (opt) total += opt.score;
+                let totalScore = 0;
+
+                for (const currentQuestion of questions) {
+                    const answer = finalAnswers[currentQuestion.fieldId];
+
+                    if (currentQuestion.type === "radio") {
+                        if (!answer) {
+                            continue;
                         }
-                    } else if (q.type === "checkbox") {
-                        const answer = finalAnswers[q.fieldId];
-                        if (Array.isArray(answer)) {
-                            for (const selectedId of answer) {
-                                const opt = q.options?.find(
-                                    (o) => o.id === selectedId,
+
+                        const selectedOption = currentQuestion.options?.find(
+                            (option) => option.id === answer,
+                        );
+
+                        if (selectedOption) {
+                            totalScore += Number(selectedOption.score) || 0;
+                        }
+
+                        continue;
+                    }
+
+                    if (currentQuestion.type === "checkbox") {
+                        if (!Array.isArray(answer)) {
+                            continue;
+                        }
+
+                        for (const selectedId of answer) {
+                            const selectedOption =
+                                currentQuestion.options?.find(
+                                    (option) => option.id === selectedId,
                                 );
-                                if (opt) total += opt.score;
+
+                            if (selectedOption) {
+                                totalScore += Number(selectedOption.score) || 0;
                             }
                         }
                     }
                 }
 
-                const { color, risk, label, status, range, advice } =
-                    getRiskFromScore(total);
+                const riskResult = getRiskFromScore(totalScore);
 
-                const nama = finalAnswers.name ?? "";
-                const bb = Number(
-                    finalAnswers.weight || finalAnswers.beratBadan || 0,
+                const { color, risk, label, status, range, advice } =
+                    riskResult;
+
+                const nama = finalAnswers.name ?? finalAnswers.nama ?? "";
+
+                const beratBadan = Number(
+                    finalAnswers.weight ??
+                        finalAnswers.beratBadan ??
+                        finalAnswers.bb ??
+                        0,
                 );
-                const tb = Number(
-                    finalAnswers.height || finalAnswers.tinggiBadan || 0,
+
+                const tinggiBadan = Number(
+                    finalAnswers.height ??
+                        finalAnswers.tinggiBadan ??
+                        finalAnswers.tb ??
+                        0,
                 );
-                const umur = Number(finalAnswers.age || finalAnswers.umur || 0);
+
+                const umur = Number(finalAnswers.age ?? finalAnswers.umur ?? 0);
 
                 const result = await submitQuizAction({
                     nama,
-                    bb,
-                    tb,
-                    resiko: total,
-                    status,
+                    bb: beratBadan,
+                    tb: tinggiBadan,
                     umur,
+                    resiko: totalScore,
+                    status,
                     risk: label,
                 });
 
@@ -250,7 +367,7 @@ export default function QuizStepClient({
                     return;
                 }
 
-                markQuizComplete(total, color, {
+                markQuizComplete(totalScore, color, {
                     risk,
                     label,
                     range,
@@ -260,14 +377,25 @@ export default function QuizStepClient({
 
                 markSubmitted();
 
-                router.push(`/mobile-result`);
-            } catch (err) {
-                console.error(err);
-                setSubmitError("Terjadi kesalahan. Silakan coba lagi.");
+                router.push("/mobile-result");
+            } catch (error) {
+                console.error("Gagal memproses hasil kuis:", error);
+
+                setSubmitError(
+                    "Terjadi kesalahan saat memproses hasil. Silakan coba lagi.",
+                );
+
                 setIsSubmitting(false);
             }
         },
-        [answers, allQuestions, question, markSubmitted, router],
+        [
+            answers,
+            isSubmitting,
+            markSubmitted,
+            question.fieldId,
+            questions,
+            router,
+        ],
     );
 
     if (!hydrated) {
@@ -281,10 +409,15 @@ export default function QuizStepClient({
     if (submitError) {
         return (
             <MobileFrame className="items-center justify-center gap-4">
-                <p className="font-poppins text-red-500 text-center">
+                <p className="text-center font-poppins text-red-500">
                     {submitError}
                 </p>
-                <DesignButton onClick={() => setSubmitError(null)}>
+
+                <DesignButton
+                    onClick={() => {
+                        setSubmitError(null);
+                        setIsSubmitting(false);
+                    }}>
                     Coba Lagi
                 </DesignButton>
             </MobileFrame>
@@ -294,18 +427,22 @@ export default function QuizStepClient({
     const commonProps = {
         question,
         answers,
-        step: question.step,
+        step: Number(question.step),
         onBack: handleBack,
+        onNext: handleNext,
+        onSubmit: handleFinalSubmit,
+        isLastStep: isFinalQuestion,
+        isSubmitting,
     };
 
     if (question.type === "radio") {
         return (
             <RadioStep
+                key={`${question.step}-${question.fieldId}`}
                 {...commonProps}
-                onSave={(fieldId, value) =>
-                    saveAnswers(fieldId, value, question.step)
-                }
-                onNext={handleNext}
+                onSave={(fieldId, value) => {
+                    saveAnswers(fieldId, value, question.step);
+                }}
             />
         );
     }
@@ -313,15 +450,20 @@ export default function QuizStepClient({
     if (question.type === "checkbox") {
         return (
             <CheckboxStep
+                key={`${question.step}-${question.fieldId}`}
                 {...commonProps}
-                onSave={(fieldId, value) =>
-                    saveAnswers(fieldId, value, question.step)
-                }
-                onSubmit={handleFinalSubmit}
-                isSubmitting={isSubmitting}
+                onSave={(fieldId, value) => {
+                    saveAnswers(fieldId, value, question.step);
+                }}
             />
         );
     }
 
-    return null;
+    return (
+        <MobileFrame className="items-center justify-center">
+            <p className="text-center font-poppins text-red-500">
+                Tipe pertanyaan tidak dikenali.
+            </p>
+        </MobileFrame>
+    );
 }

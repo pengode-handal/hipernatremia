@@ -4,7 +4,7 @@ const colors = {
   upcoming: "#ef4444",
 };
 
-export default function StepIndicator({ current = 1, total = 6 }) {
+export default function StepIndicator({ current = 1, total = 22 }) {
   return (
     <div className="flex w-full items-center justify-center px-1">
       {Array.from({ length: total }).map((_, index) => {
