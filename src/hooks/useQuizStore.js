@@ -151,12 +151,12 @@ export function useQuizStore() {
 export function getRiskFromScore(score) {
     if (score <= 39) {
         return {
-            color: "green",
-            risk: "Risiko Rendah",
-            label: "HIPERNATREMIA MINIMAL",
-            range: `Score: ${score}`,
+            color: "blue",
+            risk: "Tidak Berisiko",
+            label: "TIDAK BERISIKO MENGALAMI HIPERNATREMIA",
+            range: `${score}/60`,
             status: "rendah",
-            advice: "Risiko hipernatremia saat ini tergolong rendah. Pertahankan asupan cairan yang cukup (≥1500 ml/hari), pantau kondisi pasien secara berkala, dan edukasi pasien mengenai tanda-tanda dehidrasi dini.",
+            advice: "Tidak berisiko mengalami hipernatremia berdasarkan kebiasaan hidrasi dan aktivitas sehari-hari.",
         };
     } else {
         return {
@@ -167,11 +167,11 @@ export function getRiskFromScore(score) {
             // status: "sedang",
             // advice: "Pasien berisiko sedang mengalami hipernatremia. Tingkatkan pemantauan status cairan, pertimbangkan pemeriksaan elektrolit serum, dan konsultasikan dengan tim medis jika kondisi memburuk dalam 24–48 jam.",
             color: "red",
-            risk: "Risiko Tinggi",
+            risk: "Berisiko",
             label: "BERISIKO MENGALAMI HIPERNATREMIA",
-            range: `Score: ${score}`,
+            range: `${score}/60`,
             status: "tinggi",
-            advice: "Pasien Berisiko mengalami hipernatremia akibat kebiasaan hidrasi yang kurang baik dan kehilangan cairan selama aktivitas sehari-hari.",
+            advice: "Berisiko mengalami hipernatremia akibat kebiasaan hidrasi yang kurang baik dan kehilangan cairan selama aktivitas sehari-hari.",
         };
     }
     // else {

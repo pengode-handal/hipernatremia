@@ -4,9 +4,9 @@ const colors = {
   upcoming: "#ef4444",
 };
 
-export default function StepIndicator({ current = 1, total = 22 }) {
+export default function StepIndicator({ className = "", current = 1, total = 22 }) {
   return (
-    <div className="flex w-full items-center justify-center px-1">
+    <div className={`flex w-full items-center justify-center px-1 ${className}`}>
       {Array.from({ length: total }).map((_, index) => {
         const step = index + 1;
         const isDone = step < current;
@@ -24,12 +24,12 @@ export default function StepIndicator({ current = 1, total = 22 }) {
             key={index}
           >
             <span
-              className="h-[14px] w-[14px] shrink-0 rounded-full"
+              className="step-indicator-dot h-[14px] w-[14px] shrink-0 rounded-full"
               style={{ backgroundColor: dotColor }}
             />
             {index < total - 1 ? (
               <span
-                className="h-[3px] flex-1"
+                className="step-indicator-line h-[3px] flex-1"
                 style={{ backgroundColor: lineColor }}
               />
             ) : null}

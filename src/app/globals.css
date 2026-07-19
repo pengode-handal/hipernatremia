@@ -1,14 +1,42 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One:ital,wght@0,400&display=swap");
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities);
 @layer theme, base, components, utilities;
 @config "../tailwind.config.js";
 
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/poppins-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/poppins-500.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Special Gothic Condensed One";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/special-gothic-condensed-one-400.woff2") format("woff2");
+}
+
+:root {
+  --font-poppins: Poppins, Arial, sans-serif;
+  --font-display: "Special Gothic Condensed One", Impact, sans-serif;
+}
+
 body {
   @apply leading-[normal] m-0;
   background: #ffffff;
+  font-family: var(--font-poppins);
 }
 @layer base {
   *,
@@ -20,11 +48,113 @@ body {
 }
 
 .font-poppins {
-  font-family: Poppins, Arial, sans-serif;
+  font-family: var(--font-poppins);
 }
 
 .font-display {
-  font-family: "Special Gothic Condensed One", Impact, sans-serif;
+  font-family: var(--font-display);
+}
+
+@media (max-width: 767px) {
+  .mobile-check-frame {
+    gap: 16px;
+    justify-content: flex-start;
+    min-height: 100dvh;
+    padding-bottom: 18px;
+    padding-top: 24px;
+  }
+
+  .quiz-question-header {
+    gap: 10px;
+  }
+
+  .quiz-question-header .page-title h1 {
+    max-width: 100%;
+    white-space: normal;
+    font-size: clamp(30px, 8.7vw, 38px);
+    line-height: 92%;
+  }
+
+  .quiz-question-header p {
+    font-size: 14px;
+    line-height: 130%;
+  }
+
+  .mobile-check-list {
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .symptom-card {
+    min-height: 112px;
+    padding: 8px 12px;
+  }
+
+  .symptom-card span.font-display {
+    font-size: 25px;
+    line-height: 105%;
+  }
+
+  .symptom-card span.font-poppins {
+    font-size: 15px;
+    line-height: 110%;
+    text-align: left;
+  }
+
+  .symptom-card-check {
+    height: 40px;
+    width: 40px;
+  }
+
+  .symptom-card-check > span {
+    transform: scale(0.82);
+  }
+
+  .quiz-form-navigation {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 9px 12px;
+  }
+
+  .quiz-progress-footer {
+    padding-top: 12px;
+  }
+
+  .quiz-form-navigation > button {
+    min-height: 38px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+  }
+
+  .quiz-form-navigation > button span:first-child {
+    font-size: 16px;
+  }
+
+  .quiz-back-button {
+    order: 1;
+  }
+
+  .quiz-form-navigation > button:not(.quiz-back-button):not(.quiz-reset-button) {
+    order: 2;
+  }
+
+  .quiz-reset-button {
+    order: 3;
+  }
+
+  .quiz-step-indicator {
+    max-width: 100%;
+  }
+
+  .quiz-step-indicator .step-indicator-dot {
+    height: 9px;
+    width: 9px;
+  }
+
+  .quiz-step-indicator .step-indicator-line {
+    height: 2px;
+    min-width: 0;
+  }
 }
 
 @media (max-width: 380px) {
@@ -62,6 +192,32 @@ body {
   .form-navigation > button span[aria-hidden="true"] {
     height: 18px;
     width: 18px;
+  }
+
+  .quiz-form-navigation {
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 8px;
+  }
+
+  .quiz-form-navigation > button {
+    gap: 8px;
+    min-width: 124px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .quiz-form-navigation > button span:first-child {
+    font-size: 16px;
+  }
+
+  .quiz-reset-button {
+    min-width: 132px;
+  }
+
+  .quiz-step-indicator .step-indicator-dot {
+    height: 9px;
+    width: 9px;
   }
 }
 
@@ -139,12 +295,30 @@ body {
   }
 
   .mobile-check-frame {
-    gap: 76px;
+    gap: 34px;
     justify-content: flex-start;
+  }
+
+  .quiz-question-header {
+    gap: 18px;
+  }
+
+  .quiz-question-header p {
+    font-size: 20px;
+  }
+
+  .quiz-form-navigation {
+    column-gap: 18px;
+    max-width: 560px;
+  }
+
+  .quiz-form-navigation > button {
+    min-width: 146px;
   }
 
   .mobile-check-list {
     gap: 24px;
+    margin-top: 0;
     max-width: 540px;
   }
 

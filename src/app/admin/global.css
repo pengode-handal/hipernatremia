@@ -1,9 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Special+Gothic+Condensed+One:ital,wght@0,400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500&display=swap");
-
 body {
     margin: 0;
     line-height: normal;
+    font-family: var(--font-poppins), Poppins, Arial, sans-serif;
 }
 
 html,
@@ -44,8 +42,7 @@ body {
     --br-10: 10px;
 
     /* Font */
-    --font-poppins: Poppins;
-    --font-special-gothic-condensed-one: Special Gothic Condensed One;
+    --font-special-gothic-condensed-one: var(--font-display), "Special Gothic Condensed One", Impact, sans-serif;
 
     /* FontSize */
     --fs-16: 16px;

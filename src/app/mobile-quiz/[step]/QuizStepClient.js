@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState, useMemo } from "react";
 
@@ -50,26 +49,14 @@ function RadioStep({
 
     return (
         <MobileFrame className="mobile-check-frame items-center justify-between gap-8">
-            <PageTitle
-                icon={
-                    <button type="button" onClick={onBack} aria-label="Kembali">
-                        <Image
-                            alt="Kembali"
-                            className="h-[46px] w-[46px]"
-                            height={46}
-                            src="/svg1.svg"
-                            width={46}
-                        />
-                    </button>
-                }>
-                {question.pageTitle}
-            </PageTitle>
-
-            <section className="mobile-check-list flex w-full flex-col gap-5">
-                <p className="font-poppins text-base font-medium text-[#1e3e8a]">
+            <header className="quiz-question-header flex w-full flex-col items-center gap-5 text-center">
+                <PageTitle>{question.pageTitle}</PageTitle>
+                <p className="m-0 w-full max-w-[540px] text-left font-poppins text-base font-medium leading-[140%] text-[#1e3e8a]">
                     {question.question}
                 </p>
+            </header>
 
+            <section className="mobile-check-list flex w-full flex-col gap-5">
                 {question.options.map((option) => (
                     <SymptomCard
                         key={option.id}
@@ -81,28 +68,38 @@ function RadioStep({
                 ))}
             </section>
 
-            <div className="flex w-full flex-col items-center gap-[36px]">
-                <div className="form-navigation flex w-full max-w-[408px] items-center justify-around gap-2">
-                    <DesignButton
-                        color="red"
-                        icon="/svg2.svg"
-                        onClick={() => setSelected(null)}>
-                        Set Ulang
-                    </DesignButton>
+            <div className="form-navigation quiz-form-navigation flex w-full max-w-[540px] items-center justify-around gap-4">
+                <DesignButton
+                    className="quiz-back-button"
+                    icon="/svg-path.svg"
+                    iconClassName="rotate-180"
+                    onClick={onBack}>
+                    Kembali
+                </DesignButton>
 
-                    <DesignButton
-                        color="green"
-                        icon="/svg-path1.svg"
-                        onClick={handleNext}>
-                        {isSubmitting
-                            ? "Memproses..."
-                            : isLastStep
-                              ? "Lihat Hasil"
-                              : "Selanjutnya"}
-                    </DesignButton>
-                </div>
+                <DesignButton
+                    color="green"
+                    icon="/svg-path1.svg"
+                    onClick={handleNext}>
+                    {isSubmitting
+                        ? "Memproses..."
+                        : isLastStep
+                          ? "Lihat Hasil"
+                          : "Selanjutnya"}
+                </DesignButton>
 
+                <DesignButton
+                    className="quiz-reset-button"
+                    color="red"
+                    icon="/svg2.svg"
+                    onClick={() => setSelected(null)}>
+                    Set Ulang
+                </DesignButton>
+            </div>
+
+            <div className="quiz-progress-footer mt-auto flex w-full items-center">
                 <StepIndicator
+                    className="quiz-step-indicator"
                     current={step + INDICATOR_OFFSET}
                     total={INDICATOR_TOTAL}
                 />
@@ -157,26 +154,14 @@ function CheckboxStep({
 
     return (
         <MobileFrame className="mobile-check-frame items-center justify-between gap-8">
-            <PageTitle
-                icon={
-                    <button type="button" onClick={onBack} aria-label="Kembali">
-                        <Image
-                            alt="Kembali"
-                            className="h-[46px] w-[46px]"
-                            height={46}
-                            src="/svg1.svg"
-                            width={46}
-                        />
-                    </button>
-                }>
-                {question.pageTitle}
-            </PageTitle>
-
-            <section className="mobile-check-list flex w-full flex-col gap-5">
-                <p className="font-poppins text-base font-medium text-[#1e3e8a]">
+            <header className="quiz-question-header flex w-full flex-col items-center gap-5 text-center">
+                <PageTitle>{question.pageTitle}</PageTitle>
+                <p className="m-0 w-full max-w-[540px] text-left font-poppins text-base font-medium leading-[140%] text-[#1e3e8a]">
                     {question.question}
                 </p>
+            </header>
 
+            <section className="mobile-check-list flex w-full flex-col gap-5">
                 {question.options.map((option) => (
                     <SymptomCard
                         key={option.id}
@@ -188,28 +173,38 @@ function CheckboxStep({
                 ))}
             </section>
 
-            <div className="flex w-full flex-col items-center gap-[36px]">
-                <div className="form-navigation flex w-full max-w-[408px] items-center justify-around gap-2">
-                    <DesignButton
-                        color="red"
-                        icon="/svg2.svg"
-                        onClick={() => setChecked([])}>
-                        Set Ulang
-                    </DesignButton>
+            <div className="form-navigation quiz-form-navigation flex w-full max-w-[540px] items-center justify-around gap-4">
+                <DesignButton
+                    className="quiz-back-button"
+                    icon="/svg-path.svg"
+                    iconClassName="rotate-180"
+                    onClick={onBack}>
+                    Kembali
+                </DesignButton>
 
-                    <DesignButton
-                        color="green"
-                        icon="/svg-path1.svg"
-                        onClick={handleNext}>
-                        {isSubmitting
-                            ? "Memproses..."
-                            : isLastStep
-                              ? "Lihat Hasil"
-                              : "Selanjutnya"}
-                    </DesignButton>
-                </div>
+                <DesignButton
+                    color="green"
+                    icon="/svg-path1.svg"
+                    onClick={handleNext}>
+                    {isSubmitting
+                        ? "Memproses..."
+                        : isLastStep
+                          ? "Lihat Hasil"
+                          : "Selanjutnya"}
+                </DesignButton>
 
+                <DesignButton
+                    className="quiz-reset-button"
+                    color="red"
+                    icon="/svg2.svg"
+                    onClick={() => setChecked([])}>
+                    Set Ulang
+                </DesignButton>
+            </div>
+
+            <div className="quiz-progress-footer mt-auto flex w-full items-center">
                 <StepIndicator
+                    className="quiz-step-indicator"
                     current={step + INDICATOR_OFFSET}
                     total={INDICATOR_TOTAL}
                 />
@@ -362,9 +357,10 @@ export default function QuizStepClient({
                 });
 
                 if (result?.error) {
-                    setSubmitError(result.error);
-                    setIsSubmitting(false);
-                    return;
+                    console.warn(
+                        "Data kuis belum tersimpan, tetapi hasil tetap ditampilkan:",
+                        result.error,
+                    );
                 }
 
                 markQuizComplete(totalScore, color, {

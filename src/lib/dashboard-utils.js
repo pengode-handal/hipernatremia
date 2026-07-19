@@ -15,30 +15,60 @@ export function isInRange(value, selectedRange) {
     return numericValue >= min && numericValue <= max;
 }
 
-export function meterValue(meter) {
-    if (meter == null) return 0;
+export function scoreValue(score) {
+    if (score == null) return 0;
 
-    if (typeof meter === "number") {
-        return meter;
+    if (typeof score === "number") {
+        return score;
     }
 
-    return Number(meter.match(/\d+/)?.[0] || 0);
+    return Number(score.match(/\d+/)?.[0] || 0);
+}
+
+export function normalizeRiskStatus(status) {
+    const normalizedStatus = String(status || "").toLowerCase();
+
+    if (
+        normalizedStatus === "rendah" ||
+        normalizedStatus.includes("tidak") ||
+        normalizedStatus.includes("rendah")
+    ) {
+        return "rendah";
+    }
+
+    if (
+        normalizedStatus === "tinggi" ||
+        normalizedStatus === "sedang" ||
+        normalizedStatus.includes("berisiko") ||
+        normalizedStatus.includes("sedang") ||
+        normalizedStatus.includes("tinggi")
+    ) {
+        return "tinggi";
+    }
+
+    return status;
 }
 
 export function filterRespondents(respondents, filterValues, searchQuery = "") {
     const normalizedSearch = searchQuery.trim().toLowerCase();
+    const selectedStatus =
+        filterValues.status === "Tidak Berisiko"
+            ? "rendah"
+            : filterValues.status === "Berisiko"
+              ? "tinggi"
+              : filterValues.status;
 
     return respondents.filter((respondent) => {
         return (
             (!normalizedSearch ||
                 respondent.name.toLowerCase().includes(normalizedSearch)) &&
-            (!filterValues.status ||
-                filterValues.status === "Semua Status" ||
-                respondent.status === filterValues.status) &&
+            (!selectedStatus ||
+                selectedStatus === "Semua Status" ||
+                normalizeRiskStatus(respondent.status) === selectedStatus) &&
             isInRange(respondent.umur, filterValues.age) &&
             isInRange(respondent.beratBadan, filterValues.weight) &&
             isInRange(respondent.tinggiBadan, filterValues.height) &&
-            isInRange(meterValue(respondent.risikoMeter), filterValues.risk)
+            isInRange(scoreValue(respondent.risikoMeter), filterValues.risk)
         );
     });
 }

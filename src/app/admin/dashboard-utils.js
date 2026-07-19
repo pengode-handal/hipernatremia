@@ -12,8 +12,32 @@ export function isInRange(value, selectedRange) {
   return value >= min && value <= max;
 }
 
-export function meterValue(meter) {
-  return Number(meter.match(/\d+/)?.[0] || 0);
+export function scoreValue(score) {
+  return Number(String(score || "").match(/\d+/)?.[0] || 0);
+}
+
+export function normalizeRiskStatus(status) {
+  const normalizedStatus = String(status || "").toLowerCase();
+
+  if (
+    normalizedStatus === "rendah" ||
+    normalizedStatus.includes("tidak") ||
+    normalizedStatus.includes("rendah")
+  ) {
+    return "rendah";
+  }
+
+  if (
+    normalizedStatus === "tinggi" ||
+    normalizedStatus === "sedang" ||
+    normalizedStatus.includes("berisiko") ||
+    normalizedStatus.includes("sedang") ||
+    normalizedStatus.includes("tinggi")
+  ) {
+    return "tinggi";
+  }
+
+  return status;
 }
 
 export function filterPatients(patients, filterValues, searchQuery = "") {
@@ -25,11 +49,11 @@ export function filterPatients(patients, filterValues, searchQuery = "") {
         patient.name.toLowerCase().includes(normalizedSearch)) &&
       (!filterValues.status ||
         filterValues.status === "Semua Status" ||
-        patient.status === filterValues.status) &&
+        normalizeRiskStatus(patient.status) === filterValues.status) &&
       isInRange(patient.age, filterValues.age) &&
       isInRange(patient.weight, filterValues.weight) &&
       isInRange(patient.height, filterValues.height) &&
-      isInRange(meterValue(patient.meter), filterValues.risk)
+      isInRange(scoreValue(patient.score), filterValues.risk)
     );
   });
 }

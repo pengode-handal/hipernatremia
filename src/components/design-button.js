@@ -13,8 +13,10 @@ const iconClasses = {
 
 export default function DesignButton({
   children,
+  className = "",
   color = "blue",
   icon,
+  iconClassName = "",
   type = "button",
   onClick,
 }) {
@@ -22,7 +24,7 @@ export default function DesignButton({
     <button
       className={`group inline-flex min-h-10 items-center justify-center gap-[15px] rounded-[10px] border-[3px] bg-[#f3f4f6] px-3 py-1.5 font-poppins text-lg leading-[120%] transition-all duration-200 ease-out hover:bg-white active:translate-x-[-2px] active:translate-y-[2px] active:shadow-none ${
         colorClasses[color] || colorClasses.blue
-      }`}
+      } ${className}`}
       type={type}
       onClick={onClick}
     >
@@ -32,7 +34,7 @@ export default function DesignButton({
           aria-hidden="true"
           className={`h-5 w-5 bg-current transition-transform duration-300 ease-out ${
             iconClasses[color] || ""
-          }`}
+          } ${iconClassName}`}
           style={{
             WebkitMask: `url(${icon}) center / contain no-repeat`,
             mask: `url(${icon}) center / contain no-repeat`,

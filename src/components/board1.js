@@ -46,7 +46,7 @@ const Board1 = ({ className = "" }) => {
           </div>
         </div>
         <div className="self-stretch relative text-base leading-[120%] capitalize font-[Poppins] text-justify z-[0]">
-          Dan dirikanlah shalat, tunaikanlah zakat dan ruku' lah beserta
+          Dan dirikanlah shalat, tunaikanlah zakat dan ruku&apos; lah beserta
           orang-orang yang ruku
         </div>
       </div>

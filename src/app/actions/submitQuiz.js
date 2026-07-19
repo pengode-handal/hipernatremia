@@ -28,10 +28,10 @@ export async function submitQuizAction({
         if (!Number.isFinite(umur) || umur < 0 || umur > 120) {
             return { error: "Usia tidak valid" };
         }
-        if (!Number.isFinite(resiko) || resiko < 0) {
+        if (!Number.isFinite(resiko) || resiko < 20 || resiko > 60) {
             return { error: "Skor risiko tidak valid" };
         }
-        if (!status || !["rendah", "sedang", "tinggi"].includes(status)) {
+        if (!status || !["rendah", "tinggi"].includes(status)) {
             return { error: "Status risiko tidak valid" };
         }
         if (!risk || typeof risk !== "string") {

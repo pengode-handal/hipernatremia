@@ -3,7 +3,11 @@
 import { useState } from "react";
 import Image from "next/image";
 import { filters, patients } from "./dashboard-data";
-import { filterRespondents, getPaginationItems } from "@/lib/dashboard-utils";
+import {
+    filterRespondents,
+    getPaginationItems,
+    normalizeRiskStatus,
+} from "@/lib/dashboard-utils";
 import styles from "./dashboard.module.css";
 
 function DropdownButton({
@@ -49,6 +53,19 @@ function DropdownButton({
     );
 }
 
+function displayStatus(status) {
+    const normalizedStatus = normalizeRiskStatus(status);
+
+    if (normalizedStatus === "rendah") return "Tidak Berisiko";
+    if (normalizedStatus === "tinggi") return "Berisiko";
+    return status;
+}
+
+function displayScore(score) {
+    const numericScore = Number(score) || 0;
+    return `${numericScore}/60`;
+}
+
 const DBDashboard = ({ respondent }) => {
     const [openDropdown, setOpenDropdown] = useState(null);
     const [filterValues, setFilterValues] = useState({});
@@ -76,8 +93,13 @@ const DBDashboard = ({ respondent }) => {
         setCurrentPage(1);
     }
 
+    const dashboardRespondents =
+        Array.isArray(respondent) && respondent.length > 0
+            ? respondent
+            : patients;
+
     const filteredRespondents = filterRespondents(
-        respondent,
+        dashboardRespondents,
         filterValues,
         searchQuery,
     );
@@ -201,22 +223,24 @@ const DBDashboard = ({ respondent }) => {
                     <span>Umur</span>
                     <span>BB</span>
                     <span>TB</span>
-                    <span>Risiko Meter</span>
+                    <span>Skor</span>
                 </div>
 
                 {visibleRespondents.map((respondent, index) => (
                     <div
                         className={`${styles.tableGrid} ${styles.tableRow} ${
-                            styles[respondent.status]
+                            styles[normalizeRiskStatus(respondent.status)]
                         }`}
                         key={`${respondent.name}-${respondent.status}-${index}`}>
                         <span data-label="Nama">{respondent.name}</span>
-                        <span data-label="Status">{respondent.status}</span>
+                        <span data-label="Status">
+                            {displayStatus(respondent.status)}
+                        </span>
                         <span data-label="Umur">{respondent.umur}</span>
                         <span data-label="BB">{respondent.beratBadan}</span>
                         <span data-label="TB">{respondent.tinggiBadan}</span>
-                        <span data-label="Risiko Meter">
-                            {respondent.risikoMeter}
+                        <span data-label="Skor">
+                            {displayScore(respondent.risikoMeter)}
                         </span>
                     </div>
                 ))}

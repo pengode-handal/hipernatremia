@@ -6,7 +6,6 @@ import { useCallback, useEffect, useState } from "react";
 import DesignButton from "@/components/design-button";
 import MobileFrame from "@/components/mobile-frame";
 import ResultPanel from "@/components/result-panel";
-import StepIndicator from "@/components/step-indicator";
 import { getValidQuizResult, clearQuizCompletion } from "@/lib/quizValidator";
 
 const logoMap = {
@@ -75,7 +74,7 @@ export default function ResultPageClient() {
         return null;
     }
 
-    const { score, color, riskData } = resultData;
+    const { color, riskData } = resultData;
     const { risk, label, range, advice } = riskData;
 
     return (
@@ -103,19 +102,16 @@ export default function ResultPageClient() {
                 range={range}
             />
 
-            <div className="flex w-full flex-col items-center gap-[36px]">
-                <div className="form-navigation flex w-full max-w-[408px] items-center justify-around gap-2">
-                    <DesignButton
-                        color="red"
-                        icon="/svg2.svg"
-                        onClick={handleReset}>
-                        Kuis Baru
-                    </DesignButton>
-                    <DesignButton icon="/svg12.svg" onClick={handleSave}>
-                        Simpan Hasil
-                    </DesignButton>
-                </div>
-                <StepIndicator current={6} total={6} />
+            <div className="form-navigation flex w-full max-w-[408px] items-center justify-around gap-2">
+                <DesignButton
+                    color="red"
+                    icon="/svg2.svg"
+                    onClick={handleReset}>
+                    Kuis Baru
+                </DesignButton>
+                <DesignButton icon="/svg12.svg" onClick={handleSave}>
+                    Simpan Hasil
+                </DesignButton>
             </div>
         </MobileFrame>
     );
