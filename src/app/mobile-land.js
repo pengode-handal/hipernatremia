@@ -120,11 +120,11 @@ const MobileLand = () => {
           </button>
           <div className="flex flex-col items-center gap-6">
             <h1 className="m-0 max-w-[283px] whitespace-pre-line font-display text-5xl font-normal leading-[90%]">
-              {"KUIS RISIKO\nHIPERNATREMIA"}
+              {"SIHAT\nSkrining Risiko Hipernatremia"}
             </h1>
             <p className="m-0 max-w-[283px]">
-              Aplikasi web untuk membantu menghitung dan mengevaluasi risiko
-              hipernatremia secara cepat, akurat, dan mudah digunakan
+              Aplikasi berbasis web yang membantu melakukan skrining risiko
+              hipernatremia secara cepat, mudah, dan praktis.
             </p>
           </div>
         </div>
@@ -133,8 +133,8 @@ const MobileLand = () => {
             Ikuti Sekarang
           </DesignButton>
         </div>
-        <p className="mobile-land-footer mt-auto mb-[110px] max-w-[283px]">
-          Website ini sebagai instrumen OPSI kelompok Mirza & Anson
+        <p className="mobile-land-footer mt-auto mb-[110px] max-w-[283px] whitespace-pre-line">
+          {"SIHAT © 2026\nSkrining Risiko Hipernatremia"}
         </p>
       </MobileFrame>
       <AdminLoginPopup

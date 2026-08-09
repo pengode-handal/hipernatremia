@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Kuis Risiko Hipernatremia",
+  title: "SIHAT - Skrining Risiko Hipernatremia",
   icons: {
     icon: "/Logo5.svg",
   },
