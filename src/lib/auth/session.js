@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { verifyGuest } from "./dal";
 
-const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || "ansonmirza";
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "ansonmirza";
 const ADMIN_SESSION_TOKEN =
     process.env.ADMIN_SESSION_TOKEN || "local-admin-session";
 

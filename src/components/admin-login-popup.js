@@ -4,8 +4,7 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { adminLogin } from "@/lib/auth/session";
 
-const ADMIN_DASHBOARD_URL =
-    process.env.NEXT_PUBLIC_ADMIN_DASHBOARD_URL || "/admin";
+const ADMIN_DASHBOARD_URL = process.env.ADMIN_DASHBOARD_URL || "/admin";
 
 export default function AdminLoginPopup({ open, onClose }) {
     const [password, setPassword] = useState("");

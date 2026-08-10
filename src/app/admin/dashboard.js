@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { filters, patients } from "./dashboard-data";
+import { filters } from "./dashboard-data";
 import {
     filterRespondents,
     getPaginationItems,
@@ -93,10 +93,7 @@ const DBDashboard = ({ respondent }) => {
         setCurrentPage(1);
     }
 
-    const dashboardRespondents =
-        Array.isArray(respondent) && respondent.length > 0
-            ? respondent
-            : patients;
+    const dashboardRespondents = Array.isArray(respondent) ? respondent : [];
 
     const filteredRespondents = filterRespondents(
         dashboardRespondents,

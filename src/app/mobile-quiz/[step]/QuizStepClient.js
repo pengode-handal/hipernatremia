@@ -24,6 +24,7 @@ function RadioStep({
     onNext,
     onSubmit,
     onBack,
+    onReset,
     step,
     isLastStep,
     isSubmitting,
@@ -78,6 +79,17 @@ function RadioStep({
                 </DesignButton>
 
                 <DesignButton
+                    className="quiz-reset-button"
+                    color="red"
+                    icon="/svg2.svg"
+                    onClick={() => {
+                        setSelected(null);
+                        onReset(question.fieldId);
+                    }}>
+                    Set Ulang
+                </DesignButton>
+
+                <DesignButton
                     color="green"
                     icon="/svg-path1.svg"
                     onClick={handleNext}>
@@ -86,14 +98,6 @@ function RadioStep({
                         : isLastStep
                           ? "Lihat Hasil"
                           : "Selanjutnya"}
-                </DesignButton>
-
-                <DesignButton
-                    className="quiz-reset-button"
-                    color="red"
-                    icon="/svg2.svg"
-                    onClick={() => setSelected(null)}>
-                    Set Ulang
                 </DesignButton>
             </div>
 
@@ -115,6 +119,7 @@ function CheckboxStep({
     onNext,
     onSubmit,
     onBack,
+    onReset,
     step,
     isLastStep,
     isSubmitting,
@@ -183,6 +188,17 @@ function CheckboxStep({
                 </DesignButton>
 
                 <DesignButton
+                    className="quiz-reset-button"
+                    color="red"
+                    icon="/svg2.svg"
+                    onClick={() => {
+                        setChecked([]);
+                        onReset(question.fieldId);
+                    }}>
+                    Set Ulang
+                </DesignButton>
+
+                <DesignButton
                     color="green"
                     icon="/svg-path1.svg"
                     onClick={handleNext}>
@@ -191,14 +207,6 @@ function CheckboxStep({
                         : isLastStep
                           ? "Lihat Hasil"
                           : "Selanjutnya"}
-                </DesignButton>
-
-                <DesignButton
-                    className="quiz-reset-button"
-                    color="red"
-                    icon="/svg2.svg"
-                    onClick={() => setChecked([])}>
-                    Set Ulang
                 </DesignButton>
             </div>
 
@@ -224,8 +232,14 @@ export default function QuizStepClient({
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitError, setSubmitError] = useState(null);
 
-    const { hydrated, answers, saveAnswers, setCurrentStep, markSubmitted } =
-        useQuizStore();
+    const {
+        hydrated,
+        answers,
+        saveAnswers,
+        clearAnswer,
+        setCurrentStep,
+        markSubmitted,
+    } = useQuizStore();
 
     useEffect(() => {
         if (hydrated) {
@@ -356,13 +370,17 @@ export default function QuizStepClient({
                     risk: label,
                 });
 
-                if (result?.error) {
-                    console.warn(
-                        "Data kuis belum tersimpan, tetapi hasil tetap ditampilkan:",
-                        result.error,
+                if (!result?.success) {
+                    setSubmitError(
+                        result?.error ??
+                            "Data tidak valid dan hasil tidak dapat ditampilkan.",
                     );
+                    setIsSubmitting(false);
+                    return;
                 }
 
+                // Hasil hanya boleh dibuat setelah validasi server dan
+                // penyimpanan database berhasil.
                 markQuizComplete(totalScore, color, {
                     risk,
                     label,
@@ -409,13 +427,21 @@ export default function QuizStepClient({
                     {submitError}
                 </p>
 
-                <DesignButton
-                    onClick={() => {
-                        setSubmitError(null);
-                        setIsSubmitting(false);
-                    }}>
-                    Coba Lagi
-                </DesignButton>
+                <div className="form-navigation flex flex-wrap items-center justify-center gap-4">
+                    <DesignButton
+                        color="red"
+                        onClick={() => router.push("/mobile-info")}>
+                        Perbaiki Data
+                    </DesignButton>
+
+                    <DesignButton
+                        onClick={() => {
+                            setSubmitError(null);
+                            setIsSubmitting(false);
+                        }}>
+                        Coba Lagi
+                    </DesignButton>
+                </div>
             </MobileFrame>
         );
     }
@@ -427,6 +453,7 @@ export default function QuizStepClient({
         onBack: handleBack,
         onNext: handleNext,
         onSubmit: handleFinalSubmit,
+        onReset: (fieldId) => clearAnswer(fieldId, question.step),
         isLastStep: isFinalQuestion,
         isSubmitting,
     };

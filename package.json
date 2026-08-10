@@ -1,27 +1,28 @@
 {
-  "name": "punya-hipernatremia",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "@prisma/adapter-pg": "^7.8.0",
-    "@prisma/client": "^7.8.0",
-    "bcrypt": "^6.0.0",
-    "next": "16.2.6",
-    "postcss": "^8.5.14",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "eslint": "^9",
-    "eslint-config-next": "16.2.6",
-    "prisma": "^7.8.0",
-    "tailwindcss": "^4"
-  }
+    "name": "punya-hipernatremia",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev --webpack",
+        "build": "next build --webpack",
+        "start": "node server.js",
+        "lint": "eslint"
+    },
+    "dependencies": {
+        "@prisma/adapter-pg": "7.8.0",
+        "@prisma/adapter-ppg": "7.8.0",
+        "@prisma/client": "7.8.0",
+        "prisma": "7.8.0",
+        "bcrypt": "^6.0.0",
+        "next": "16.2.6",
+        "postcss": "^8.5.14",
+        "react": "19.2.4",
+        "react-dom": "19.2.4"
+    },
+    "devDependencies": {
+        "@tailwindcss/postcss": "^4",
+        "eslint": "^9",
+        "eslint-config-next": "16.2.6",
+        "tailwindcss": "^4"
+    }
 }

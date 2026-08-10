@@ -1,7 +1,7 @@
 // hooks/useQuizStore.js
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const STORAGE_KEY = "opsi_quiz_state";
 
@@ -49,18 +49,42 @@ function saveState(state) {
 }
 
 export function useQuizStore() {
-    const [state, setStateRaw] = useState(() => loadState());
-    const [hydrated] = useState(() => typeof window !== "undefined");
+    const [state, setStateRaw] = useState(defaultState);
+    const [hydrated, setHydrated] = useState(false);
+
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setStateRaw(loadState());
+
+        setHydrated(true);
+    }, []);
 
     const setState = useCallback((updater) => {
         setStateRaw((prev) => {
             const next =
                 typeof updater === "function" ? updater(prev) : updater;
+
             saveState(next);
             return next;
         });
     }, []);
+    const clearAnswer = useCallback(
+        (fieldId, step) => {
+            setState((prev) => {
+                const answers = { ...prev.answers };
+                delete answers[fieldId];
 
+                return {
+                    ...prev,
+                    answers,
+                    completedSteps: prev.completedSteps.filter(
+                        (completedStep) => completedStep !== step,
+                    ),
+                };
+            });
+        },
+        [setState],
+    );
     const saveAnswers = useCallback(
         (fieldId, value, step) => {
             setState((prev) => ({
@@ -140,6 +164,7 @@ export function useQuizStore() {
         completedSteps: state.completedSteps,
         submittedAt: state.submittedAt,
         saveAnswers,
+        clearAnswer,
         saveMultipleAnswers,
         setCurrentStep,
         markSubmitted,
